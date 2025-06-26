@@ -39,3 +39,33 @@ df[['국어','영어']].map(jumsu)
 
 # 방법 3
 # pd.cut 
+pd.cut(df['국어'],bins=[80,90])
+df['등급'] = pd.cut(df['국어'],bins=[0,80,90,100],  labels=['A','B','C'] ,right=False)
+
+
+
+import seaborn as sns
+mpg = sns.load_dataset("mpg")
+mpg.info()
+
+mpg.groupby('origin').mean() #문자값 칼럼때문에 에러 발생함 
+mpg.groupby('origin').iloc[:,:6] # 에러가 발생함 
+mpg.groupby('origin')[['mpg','cylinders','displacement']].mean()
+mpg.groupby('origin')[['mpg','cylinders','displacement']].sum()
+mpg.groupby('origin').sum()
+mpg.groupby('origin').sum()[['mpg','cylinders','displacement']]
+
+mpg[['mpg','cylinders','displacement']].groupby('origin').sum() #  origin컬럼이 없어서 에러가 남
+
+
+mpg.groupby('origin')[['mpg','cylinders','displacement']].apply(np.sum,axis=0)
+mpg.groupby('origin')[['mpg','cylinders','displacement']].agg(np.sum,axis=0)
+
+
+
+# 판다스 입문 책 256,257 page 참조
+def test(x):
+    result = x.sum()/len(x)
+    return result
+
+mpg.groupby('origin')[['mpg','cylinders','displacement']].agg(test)

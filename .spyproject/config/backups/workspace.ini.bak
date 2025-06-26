@@ -4,7 +4,7 @@ save_data_on_exit = True
 save_history = True
 save_non_project_files = False
 project_type = 'empty-project-type'
-recent_files = ['..\\.spyder-py3\\temp.py', '20250625-(3,4,5)교시.py']
+recent_files = ['20250625-(3,4,5)교시.py', '20250626-(1,2,3,4)교시.py', '20250626-(4)교시.py']
 
 [main]
 version = 0.2.0
